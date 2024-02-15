@@ -131,7 +131,7 @@ extension View {
 private struct PresentingPaywallFooterModifier: ViewModifier {
 
     let configuration: PaywallViewConfiguration
-    let purchaseStarted: PurchaseStartedHandler?
+    let purchaseStarted: PurchaseOfPackageStartedHandler?
     let purchaseCompleted: PurchaseOrRestoreCompletedHandler?
     let purchaseCancelled: PurchaseCancelledHandler?
     let restoreCompleted: PurchaseOrRestoreCompletedHandler?
@@ -143,7 +143,7 @@ private struct PresentingPaywallFooterModifier: ViewModifier {
             .safeAreaInset(edge: .bottom) {
                 PaywallView(configuration: self.configuration)
                     .onPurchaseStarted {
-                        self.purchaseStarted?()
+                        self.purchaseStarted?($0)
                     }
                     .onPurchaseCompleted {
                         self.purchaseCompleted?($0)
