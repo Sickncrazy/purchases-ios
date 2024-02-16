@@ -116,7 +116,9 @@ extension View {
                         introEligibility: introEligibility,
                         purchaseHandler: purchaseHandler
                     ),
-                    purchaseStarted: purchaseStarted,
+                    purchaseStarted: { _ in
+                        purchaseStarted?()
+                    },
                     purchaseCompleted: purchaseCompleted,
                     purchaseCancelled: purchaseCancelled,
                     restoreCompleted: restoreCompleted,
